@@ -28,12 +28,18 @@ fprintf('Generating superpixels ...')
 nSp = numel(unique(l));
 
 for nsp = 1:nSp
-    [idx,masks] = neighSPs(l,Am,102,3); 
-    showMasks(masks,im);
+    nsp = 191;
+    [idx,masks] = neighSPs(l,Am,nsp,3); 
+    %showMasks(masks,im);
     contexts = mapsvec(idx,:);
     
     contradict = computeContradicts(contexts);
     predConf = optimization_func(R, contradict, stepValue, 1);
+    imContour= drawSpContour(l,im,nsp,[255 255 255]);    
+    for i=1:R
+        draws{i} = drawSpContour(l,mat2gray(imMap{i}),nsp,[255 255 255]);                     
+    end
+    
 end
 
 
