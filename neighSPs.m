@@ -1,4 +1,4 @@
-function [idx masks] =  neighSPs(label,Am,spID,numLevel )
+function [idx,masks,allSPs] =  neighSPs(label,Am,spID,numLevel )
 %This function receives a superpixel and a level, and generates different
 %levels of the neghboring pixels around the target superpixel.
 
